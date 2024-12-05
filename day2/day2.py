@@ -22,21 +22,42 @@ def is_strictly_decreasing(a):
         prev_num = curr_num
     return True
 
-def safe_reports(input):
-    safe = 0
+def make_num_list(input):
+    number_list = []
     s = open_file(input)
     report_list = s.splitlines()
     for entry in report_list:
-        number_list = list(map(int, entry.split()))
-        if is_strictly_increasing(number_list) or is_strictly_decreasing(number_list):
-            if all(1 <= abs(number_list[i] - number_list[i + 1]) <= 3 for i in range(len(number_list) - 1)):
+        number_list.append(list(map(int, entry.split())))
+
+    return number_list
+
+def safe_reports(input):
+    safe = 0
+    number_list = make_num_list(input)
+    for entry in number_list:
+        if is_strictly_increasing(entry) or is_strictly_decreasing(entry):
+            if all(1 <= abs(entry[i] - entry[i + 1]) <= 3 for i in range(len(entry) - 1)):
                 safe += 1
             
     return safe
 
-def safe_p2(input):
+def safe_part2(input):
+    safe = 0
+    number_list = make_num_list(input)
+    for entry in number_list:
+        unsafe_count = 0
+        if is_strictly_increasing(entry) or is_strictly_decreasing(entry):
+            for i in range(len(entry) - 1):
+                if not (1 <= abs(entry[i] - entry[i + 1]) <= 3):
+                    unsafe_count += 1
+                    if unsafe_count > 1:
+                        break
+        if unsafe_count <= 1:
+            safe += 1
+    return safe
 
 
 
 print(safe_reports(input))
+print(safe_part2(input))
 
