@@ -31,6 +31,14 @@ def make_num_list(input):
 
     return number_list
 
+def is_safe(input):
+    num_list = make_num_list(input)
+    for entry in num_list:
+        if is_strictly_increasing(entry) or is_strictly_decreasing(entry):
+            if all(1 <= abs(entry[i] - entry[i + 1]) <= 3 for i in range(len(entry)-1)):
+               return True 
+
+
 def safe_reports(input):
     safe = 0
     number_list = make_num_list(input)
