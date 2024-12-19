@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 class Day2 {
 	public static void main(String[] args) {
-		ArrayList<String> data = getInput("../input.txt");
+		ArrayList<String> data = getInput("./input.txt");
 
 	}
 
