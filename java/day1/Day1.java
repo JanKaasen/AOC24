@@ -11,7 +11,7 @@ public class Day1 {
 		ArrayList<String> r = new ArrayList<>();
 		ArrayList<Integer> rightInt = new ArrayList<>();
 		ArrayList<Integer> leftInt = new ArrayList<>();
-
+        
 		separateLists(data, l, r);
 		leftInt = convertToInt(l);
 		rightInt = convertToInt(r);
@@ -53,6 +53,12 @@ public class Day1 {
 		}
 	}
 
+ /**
+  * Converts arraylist elements to int
+  *
+  * @param arrayList
+  * @return arrayList
+  */
 	static ArrayList<Integer> convertToInt(ArrayList<String> arrayList) {
 		ArrayList<Integer> convertedList = new ArrayList<>();
 		for (String line : arrayList) {
